@@ -7,6 +7,7 @@ import StartView from './components/StartView';
 import NewGameView from './components/NewGameView';
 import ScoreView from './components/ScoreView';
 import ContinueView from './components/ContinueView';
+import CheckScore from './components/CheckScore';
 import { persistor, store } from './store/ConfigureStore'; // See for what
 import { persistStore } from 'redux-persist'
 import { PersistGate } from 'redux-persist/lib/integration/react'
@@ -26,12 +27,12 @@ export default class App extends React.Component {
             <Stack.Navigator
               initialRouteName="Start"
               screenOptions={{
-                title: '7 Wonder duel score',
+                title: '7 Wonders duel score',
                 headerTitleAlign: 'center',
                 headerStyle: {
-                  backgroundColor: '#e3cfad',
+                  backgroundColor: '#518668',
                 },
-                headerTintColor: 'black',
+                headerTintColor: '#fbe899',
                 headerTitleStyle: {
                   fontWeight: 'bold',
                 },
@@ -40,6 +41,7 @@ export default class App extends React.Component {
               <Stack.Screen name="New" component={NewGameView} />
               <Stack.Screen name="Continue" component={ContinueView} />
               <Stack.Screen name="Score" component={ScoreView} />
+              <Stack.Screen name="CheckScore" component={CheckScore} />
             </Stack.Navigator>
           </NavigationContainer>
         </PersistGate>

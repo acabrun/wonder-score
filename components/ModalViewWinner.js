@@ -14,7 +14,7 @@ class ModalViewWinner extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      saveConfirm: false
+      saveConfirm: false,
     };
   }
 
@@ -98,13 +98,13 @@ class ModalViewWinner extends Component {
           {/* ----------------------- SAVE GAME CONFIRM TEXT------------------------ */}
           { this.state.saveConfirm ? <View
             style={{
-              backgroundColor: "rgba(52, 140, 33, 0.45)",
+              backgroundColor: "#518668c9",
               flex: 1,
               alignItems: "center",
               justifyContent: "center",
             }}
           >
-            <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+            <Text style={{ fontSize: 18, fontWeight: "bold", color: "#fbe899" }}>
               Game saved !
             </Text>
           </View> : null }
@@ -112,6 +112,7 @@ class ModalViewWinner extends Component {
           <View
             style={{
               flex: 14,
+              backgroundColor: "#518668"
             }}
           >
             <View
@@ -121,7 +122,7 @@ class ModalViewWinner extends Component {
                 justifyContent: "center",
               }}
             >
-              <Text style={{ fontSize: 35, fontWeight: "bold" }}>
+              <Text style={{ fontSize: 35, fontWeight: "bold", color: "#fbe899" }}>
                 {this.props.winner} wins !
               </Text>
             </View>
@@ -134,12 +135,14 @@ class ModalViewWinner extends Component {
             >
               <TouchableHighlight
                 style={styles.button}
+                underlayColor="#fbe899"
                 onPress={() => this.handleHide()}
               >
-                <Text style={styles.textButton}>Okay !</Text>
+                <Text style={styles.textButton} >OK</Text>
               </TouchableHighlight>
               <TouchableHighlight
                 style={styles.button}
+                underlayColor="#fbe899"
                 onPress={() => this._setIdMatch()}
               >
                 <Text style={styles.textButton}>Save</Text>
@@ -162,14 +165,16 @@ const styles = StyleSheet.create({
   },
   button: {
     alignItems: "center",
-    backgroundColor: "#e3cfad",
+    backgroundColor: "#518668",
     padding: 10,
     margin: 10,
     borderRadius: 10,
     width: 250,
+    borderWidth: 2.5,
+    borderColor: "#fbe899"
   },
   textButton: {
-    color: "black",
+    color: "#fbe899",
     fontSize: 16,
     fontWeight: "bold",
   },

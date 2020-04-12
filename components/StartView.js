@@ -1,30 +1,40 @@
-import React, { Component } from "react";
-import { View, TouchableOpacity, StyleSheet, Text } from "react-native";
+import React, {Component} from 'react';
+import {View, TouchableHighlight, StyleSheet, Text} from 'react-native';
 
-export default function StartView({ navigation }) {
+export default function StartView({navigation}) {
   return (
-    <View style={{ flex: 1, backgroundColor: "yellow" }}>
+    <View style={{flex: 1, backgroundColor: 'yellow'}}>
       <View
         style={{
           flex: 7,
-          justifyContent: "center",
-          backgroundColor: "white"
-        }}
-      >
-        <TouchableOpacity
+          justifyContent: 'center',
+          backgroundColor: 'white',
+        }}>
+          {/* -------------------CONTINUE-------------------- */}
+        <TouchableHighlight
           style={styles.button}
-          backgroundColor="green"
-          onPress={() => navigation.navigate("Continue")}
-        >
+          underlayColor="#fbe899"
+          onPress={() => navigation.navigate('Continue', {
+            isCheckingScore: false
+          } )}>
           <Text style={styles.textButton}> Continue </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
+        </TouchableHighlight>
+        {/* -------------------NEW GAME-------------------- */}
+        <TouchableHighlight
           style={styles.button}
-          backgroundColor="blue"
-          onPress={() => navigation.navigate("New")}
-        >
+          underlayColor="#fbe899"
+          onPress={() => navigation.navigate('New')}>
           <Text style={styles.textButton}> New game </Text>
-        </TouchableOpacity>
+        </TouchableHighlight>
+        {/* -------------------SCORE-------------------- */}
+        <TouchableHighlight
+          style={styles.button}
+          underlayColor="#fbe899"
+          onPress={() => navigation.navigate('Continue', {
+            isCheckingScore: true
+          } )}>
+          <Text style={styles.textButton}> Score </Text>
+        </TouchableHighlight>
       </View>
     </View>
   );
@@ -32,19 +42,20 @@ export default function StartView({ navigation }) {
 
 const styles = StyleSheet.create({
   textButton: {
-    color: "black",
+    color: '#fbe899', //Gold
     fontSize: 16,
-    fontWeight: "bold"
+    fontWeight: 'bold',
   },
   titleText: {
     fontSize: 30,
-    fontWeight: "bold"
+    fontWeight: 'bold',
   },
   button: {
-    alignItems: "center",
-    backgroundColor: "#e3cfad",
+    alignItems: 'center',
+    backgroundColor: '#518668', //green
     padding: 10,
     margin: 10,
-    borderRadius: 10
-  }
+    borderRadius: 50,
+    borderWidth: 2,
+  },
 });

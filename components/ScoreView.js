@@ -4,7 +4,7 @@ import {
   TextInput,
   Text,
   StyleSheet,
-  TouchableOpacity,
+  TouchableHighlight,
   CheckBox,
   Image,
 } from "react-native";
@@ -196,11 +196,11 @@ export default class ScoreView extends Component {
         <View
           style={{
             flex: 6,
-            backgroundColor: "white",
+            backgroundColor: "black",
             // justifyContent: "space-around",
             alignItems: "stretch",
-            marginBottom: 5,
-            marginTop: 10,
+            //marginBottom: 10,
+            //marginTop: 10,
           }}
         >
           {/* ------------------ROW SCORE-------------------------------------------PLAYER----- */}
@@ -652,6 +652,7 @@ export default class ScoreView extends Component {
               >
                 <CheckBox
                   value={this.state.p1VicMil}
+                  uncheckedColor="white"   //<------------------------------
                   onValueChange={this.handleCheckBoxP1Mil}
                 />
               </View>
@@ -742,20 +743,22 @@ export default class ScoreView extends Component {
         <View
           style={{
             flex: 1,
-            justifyContent: "space-around",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
             backgroundColor: "white",
           }}
         >
-          <TouchableOpacity
+          <TouchableHighlight
             style={styles.button}
-            backgroundColor="blue"
+            underlayColor="#fbe899"
             onPress={this.handleSumPlayer}
           >
             <Text style={styles.textButton}> Check winner </Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={this.handleRestart}>
-            <Text style={styles.textButton}> Restart </Text>
-          </TouchableOpacity>
+          </TouchableHighlight>
+          <TouchableHighlight style={styles.button} underlayColor="#fbe899" onPress={this.handleRestart}>
+            <Text style={styles.textButton}  > Restart </Text>
+          </TouchableHighlight>
         </View>
       </View>
     );
@@ -765,21 +768,27 @@ export default class ScoreView extends Component {
 const styles = StyleSheet.create({
   baseText: {
     fontSize: 18,
+    fontWeight: "bold"
   },
   titleText: {
     fontSize: 30,
     fontWeight: "bold",
   },
   button: {
+    flex: 1,
     alignItems: "center",
-    backgroundColor: "#e3cfad",
+    justifyContent: "center",
+    backgroundColor: "#518668",
     padding: 10,
     margin: 10,
-    borderRadius: 10,
+    borderRadius: 100,
+    height: 50,
+    borderColor: "black",
+    borderWidth: 2.5
   },
   textButton: {
-    color: "black",
-    fontSize: 16,
+    color: "#fbe899",
+    fontSize: 20,
     fontWeight: "bold",
   },
   textInput: {

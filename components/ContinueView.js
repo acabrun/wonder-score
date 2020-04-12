@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { View, TouchableOpacity, StyleSheet, Text } from "react-native";
-import { FAKE_GAME_TAB } from "../helpers/HelpersTab";
+import React, {Component} from 'react';
+import {View, TouchableHighlight, StyleSheet, Text} from 'react-native';
+import {FAKE_GAME_TAB} from '../helpers/HelpersTab';
 
-import { connect } from "react-redux";
+import {connect} from 'react-redux';
 
 class ContinueView extends Component {
   constructor(props) {
@@ -13,15 +13,16 @@ class ContinueView extends Component {
   componentDidUpdate() {}
 
   render() {
+    const {isCheckingScore} = this.props.route.params;
+
     return (
-      <View style={{ flex: 1, backgroundColor: "yellow" }}>
+      <View style={{flex: 1, backgroundColor: 'yellow'}}>
         {/* LOG */}
         <View
           style={{
             flex: 1.1,
-            backgroundColor: "white"
-          }}
-        >
+            backgroundColor: 'white',
+          }}>
           <View alignItems="center">
             {this.props.gameSaved.join() === [].join() ? (
               <Text style={styles.baseText}>No game found !</Text>
@@ -32,26 +33,37 @@ class ContinueView extends Component {
 
           <View>
             {this.props.gameSaved
-              ? Object.values(this.props.gameSaved).map(game => (
-                  <TouchableOpacity
+              ? Object.values(this.props.gameSaved).map((game) => (
+                  <TouchableHighlight
                     key={game.idMatch}
                     style={styles.button}
+                    underlayColor="#fbe899"
                     backgroundColor="green"
-                    onPress={() => {
-                      this.props.navigation.navigate("Score", {
-                        paramsMatch: game.paramsMatch,
-                        player1: game.player1NameMatch,
-                        player2: game.player2NameMatch,
-                        idMatch: game.idMatch,
-                       // idGame: game.paramsMatch[0].idGame,
-                        isNewMatch: false
-                      });
-                    }}
-                  >
+                    onPress={
+                      isCheckingScore
+                        ? () => {
+                            this.props.navigation.navigate('CheckScore', {
+                              paramsMatch: game.paramsMatch,
+                              player1: game.player1NameMatch,
+                              player2: game.player2NameMatch,
+                              idMatch: game.idMatch,
+                            }) ;
+                          }
+                        : () => {
+                            this.props.navigation.navigate('Score', {
+                              paramsMatch: game.paramsMatch,
+                              player1: game.player1NameMatch,
+                              player2: game.player2NameMatch,
+                              idMatch: game.idMatch,
+                              // idGame: game.paramsMatch[0].idGame,
+                              isNewMatch: false,
+                            });
+                          }
+                    }>
                     <Text style={styles.textButton}>
                       {game.player1NameMatch} Vs {game.player2NameMatch}
                     </Text>
-                  </TouchableOpacity>
+                  </TouchableHighlight>
                 ))
               : null}
           </View>
@@ -63,27 +75,28 @@ class ContinueView extends Component {
 
 const styles = StyleSheet.create({
   textButton: {
-    color: "black",
+    color: '#fbe899',
     fontSize: 16,
-    fontWeight: "bold"
+    fontWeight: 'bold',
   },
   baseText: {
-    fontSize: 18,
+    fontSize: 28,
     marginBottom: 50,
-    marginTop: 25
+    marginTop: 25,
   },
   button: {
-    alignItems: "center",
-    backgroundColor: "#e3cfad",
+    alignItems: 'center',
+    backgroundColor: '#518668',
     padding: 10,
     margin: 10,
-    borderRadius: 10
-  }
+    borderRadius: 50,
+    borderWidth: 2,
+  },
 });
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    gameSaved: state.gameSaved
+    gameSaved: state.gameSaved,
   };
 };
 export default connect(mapStateToProps)(ContinueView);

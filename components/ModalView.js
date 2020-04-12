@@ -34,23 +34,25 @@ export default class ModalView extends Component {
           <View
             style={{
               flex: 1,
+              backgroundColor: "#518668",
               alignItems: "center",
               justifyContent: "center"
             }}
           >
             <View>
               <Text
-                style={{ marginBottom: 50, fontSize: 20, fontWeight: "bold" }}
+                style={{ marginBottom: 50, fontSize: 20, fontWeight: "bold", color: "#fbe899" }}
               >
                 Previous winner was {this.props.previousWinner}
               </Text>
               <TouchableHighlight
                 style={styles.button}
+                underlayColor="#fbe899"
                 onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
                 }}
               >
-                <Text style={styles.textButton}>Okay !</Text>
+                <Text style={styles.textButton}>OK</Text>
               </TouchableHighlight>
             </View>
           </View>
@@ -70,16 +72,18 @@ const styles = StyleSheet.create({
   },
   button: {
     alignItems: "center",
-    backgroundColor: "#e3cfad",
+    backgroundColor: "#518668",
     padding: 10,
     margin: 10,
     borderRadius: 10,
-    width: 250
+    width: 250,
+    borderWidth: 2.5,
+    borderColor: "#fbe899"
   },
   textButton: {
-    color: "black",
+    color: "#fbe899",
     fontSize: 16,
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   textInput: {
     flex: 1,

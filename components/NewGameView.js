@@ -4,7 +4,7 @@ import {
   TextInput,
   Text,
   StyleSheet,
-  TouchableOpacity,
+  TouchableHighlight,
   KeyboardAvoidingView
 } from "react-native";
 
@@ -57,8 +57,9 @@ class NewGameView extends Component {
             backgroundColor: "white"
           }}
         >
-          <TouchableOpacity
+          <TouchableHighlight
             style={styles.button}
+            underlayColor="#fbe899"
             backgroundColor="blue"
             onPress={() => {
               if (this.state.p1.trim() === "" || this.state.p2.trim() === "") {
@@ -74,7 +75,7 @@ class NewGameView extends Component {
             }}
           >
             <Text style={styles.textButton}> Start game </Text>
-          </TouchableOpacity>
+          </TouchableHighlight>
         </View>
       </KeyboardAvoidingView>
     );
@@ -83,7 +84,8 @@ class NewGameView extends Component {
 
 const styles = StyleSheet.create({
   baseText: {
-    fontSize: 18
+    fontSize: 28,
+    fontWeight: "bold"
   },
   titleText: {
     fontSize: 30,
@@ -91,13 +93,14 @@ const styles = StyleSheet.create({
   },
   button: {
     alignItems: "center",
-    backgroundColor: "#e3cfad",
+    backgroundColor: "#518668",
     padding: 10,
     margin: 10,
-    borderRadius: 10
+    borderRadius: 50,
+    borderWidth: 2
   },
   textButton: {
-    color: "black",
+    color: "#fbe899",
     fontSize: 16,
     fontWeight: "bold"
   },
@@ -105,15 +108,15 @@ const styles = StyleSheet.create({
     height: 40,
     width: 250,
     borderColor: "black",
-    borderWidth: 1,
-    borderRadius: 5
+    borderWidth: 2,
+    borderRadius: 10,
   },
   textInputNotFilled: {
     height: 40,
     width: 250,
     borderColor: "red",
-    borderWidth: 1,
-    borderRadius: 5
+    borderWidth: 2,
+    borderRadius: 10
   }
 });
 
