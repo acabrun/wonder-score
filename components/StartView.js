@@ -6,7 +6,6 @@ class StartView extends Component {
   render() {
     return (
       <View style={styles.container}>
-
         {/* -------------------CONTINUE-------------------- */}
         {/* ---    Display only if match exist      --- */}
         {this.props.gameSaved.join() === [].join() ? null : (
@@ -31,16 +30,18 @@ class StartView extends Component {
         </TouchableHighlight>
 
         {/* -------------------SCORE-------------------- */}
-        <TouchableHighlight
-          style={styles.button}
-          underlayColor="#fbe899"
-          onPress={() =>
-            this.props.navigation.navigate('Continue', {
-              isCheckingScore: true,
-            })
-          }>
-          <Text style={styles.textButton}> Score </Text>
-        </TouchableHighlight>
+        {this.props.gameSaved.join() === [].join() ? null : (
+          <TouchableHighlight
+            style={styles.button}
+            underlayColor="#fbe899"
+            onPress={() =>
+              this.props.navigation.navigate('Continue', {
+                isCheckingScore: true,
+              })
+            }>
+            <Text style={styles.textButton}> Score </Text>
+          </TouchableHighlight>
+        )}
       </View>
     );
   }

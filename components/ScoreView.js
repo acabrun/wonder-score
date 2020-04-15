@@ -116,6 +116,7 @@ export default class ScoreView extends Component {
       this.state.p2VicSci
     )
       this.setState({winner: this.props.route.params.player2});
+    else this.setState({winner: "Draw game"})
   };
 
   handleCheckBoxP1Mil = () => {
@@ -167,6 +168,7 @@ export default class ScoreView extends Component {
       isSave: false,
     });
   };
+
 
   render() {
     const {

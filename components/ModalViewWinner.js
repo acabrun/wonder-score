@@ -108,15 +108,18 @@ class ModalViewWinner extends Component {
             </View>
           ) : null}
 
-          <View
-            style={styles.container}>
+          <View style={styles.container}>
             <View
               style={{
                 flex: 1,
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-              <Text style={styles.baseText}>{this.props.winner} wins !</Text>
+              {this.props.winner == 'Draw game' ? (
+                <Text style={styles.baseText}>{this.props.winner} !</Text>
+              ) : (
+                <Text style={styles.baseText}>{this.props.winner} wins !</Text>
+              )}
             </View>
             <View
               style={{
@@ -146,7 +149,7 @@ class ModalViewWinner extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 14,
     backgroundColor: '#518668',
   },
   baseText: {
