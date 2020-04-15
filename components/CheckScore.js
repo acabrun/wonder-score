@@ -31,7 +31,7 @@ class CheckScore extends Component {
           <FlatList
             data={idMatch.paramsMatch}
             renderItem={({item}) => <ScoreItem score={item} />}
-            //   keyExtractor={(item) => item.id}
+            //keyExtractor={(item) => item.idGame}
             //   extraData={selected}
           />
         </View>

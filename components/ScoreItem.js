@@ -4,7 +4,6 @@ import {StyleSheet, View, Text} from 'react-native';
 class ScoreItem extends React.Component {
   render() {
     const score = this.props.score;
-    console.log(score);
     return (
       <View style={styles.container}>
         <View style={{flex: 1, flexDirection: 'row'}}>
@@ -31,7 +30,8 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 5,
     marginBottom: 5,
-    borderWidth: 2
+    borderWidth: 3,
+    borderColor: "#518668"
   },
 });
 

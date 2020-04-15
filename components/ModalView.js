@@ -75,14 +75,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#518668",
     padding: 10,
     margin: 10,
-    borderRadius: 10,
+    borderRadius: 50,
     width: 250,
     borderWidth: 2.5,
     borderColor: "#fbe899"
   },
   textButton: {
     color: "#fbe899",
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: "bold",
   },
   textInput: {

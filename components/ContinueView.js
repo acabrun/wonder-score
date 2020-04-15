@@ -24,8 +24,8 @@ class ContinueView extends Component {
             backgroundColor: 'white',
           }}>
           <View alignItems="center">
-            {this.props.gameSaved.join() === [].join() ? (
-              <Text style={styles.baseText}>No game found !</Text>
+            {isCheckingScore ? (
+              <Text style={styles.baseText}>Which match do you want to check ?</Text>
             ) : (
               <Text style={styles.baseText}>Choose game !</Text>
             )}
@@ -47,7 +47,7 @@ class ContinueView extends Component {
                               player1: game.player1NameMatch,
                               player2: game.player2NameMatch,
                               idMatch: game.idMatch,
-                            }) ;
+                            });
                           }
                         : () => {
                             this.props.navigation.navigate('Score', {
@@ -76,13 +76,14 @@ class ContinueView extends Component {
 const styles = StyleSheet.create({
   textButton: {
     color: '#fbe899',
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: 'bold',
   },
   baseText: {
     fontSize: 28,
     marginBottom: 50,
     marginTop: 25,
+    textAlign: "center"
   },
   button: {
     alignItems: 'center',
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 10,
     borderRadius: 50,
-    borderWidth: 2,
+    //borderWidth: 2,
   },
 });
 
