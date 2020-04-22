@@ -34,7 +34,7 @@ class ContinueView extends Component {
             )}
           </View>
 
-          <View>
+          <View style={{flex:1, alignItems:"center"}} >
             {this.props.gameSaved
               ? Object.values(this.props.gameSaved).map((game) => (
                   <TouchableHighlight
@@ -94,6 +94,7 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 10,
     borderRadius: 50,
+    width: 350,
     //borderWidth: 2,
   },
 });

@@ -7,6 +7,7 @@ import {
   TouchableHighlight,
   Image,
   KeyboardAvoidingView,
+  Button,
 } from 'react-native';
 import {CheckBox} from 'react-native-elements';
 import ModalView from './ModalView';
@@ -116,7 +117,7 @@ export default class ScoreView extends Component {
       this.state.p2VicSci
     )
       this.setState({winner: this.props.route.params.player2});
-    else this.setState({winner: "Draw game"})
+    else this.setState({winner: 'Draw game'});
   };
 
   handleCheckBoxP1Mil = () => {
@@ -136,8 +137,8 @@ export default class ScoreView extends Component {
   };
 
   handleOnSave = () => {
-    this.setState({isSave: true})
-  }
+    this.setState({isSave: true});
+  };
 
   handleRestart = () => {
     this.setState({
@@ -169,6 +170,14 @@ export default class ScoreView extends Component {
     });
   };
 
+  componentDidMount() {
+    this.props.navigation.setOptions({
+      headerLeft: () => (
+        // <Button color='#518668' title='home' onPress={() => this.props.navigation.popToTop()}/>
+        <Text style={{paddingLeft:10, color: '#fbe899', fontWeight: 'bold' }} onPress={() => this.props.navigation.popToTop()}>Back</Text>
+      ),
+    })
+  }
 
   render() {
     const {
@@ -179,6 +188,15 @@ export default class ScoreView extends Component {
       isNewMatch,
     } = this.props.route.params;
 
+    //Reset previous route
+    // const resetAction = StackActions.reset({
+    //   index: 0,
+    //   key: null,
+    //   actions: [NavigationActions.navigate({routeName: 'Continue'})],
+    // });
+    // this.props.navigation.dispatch(resetAction);
+
+    //this.props.navigation.dispatch(StackActions.popToTop());
     return (
       <KeyboardAvoidingView style={{flex: 1}}>
         {/* ---------------------------------------MODAL VIEW-------------------------------------- */}
@@ -716,7 +734,8 @@ export default class ScoreView extends Component {
           <TouchableHighlight
             style={styles.button}
             underlayColor="#fbe899"
-            onPress={ this.handleRestart  // For 2 players only
+            onPress={
+              this.handleRestart // For 2 players only
               // this.state.isSave
               //   ? () =>
               //       this.props.navigation.navigate('Continue', {
@@ -769,5 +788,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
-

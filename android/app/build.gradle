@@ -152,10 +152,10 @@ android {
         }
         release {
            // if (project.hasProperty('wds.keystore')) {
-                storeFile file('wds.keystore')
-                storePassword 'miyamoto6'
-                keyAlias 'wds'
-                keyPassword 'miyamoto6'
+                storeFile file('wonder-score.keystore')
+                storePassword 'miyamoto'
+                keyAlias 'wonder-score'
+                keyPassword 'miyamoto'
             //}
          }
     }

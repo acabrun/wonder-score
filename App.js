@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Provider} from 'react-redux';
-import {StatusBar} from 'react-native';
+import {StatusBar, Button} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import StartView from './components/StartView';
@@ -44,7 +44,10 @@ export default class App extends Component {
               <Stack.Screen name="Start" component={StartView} />
               <Stack.Screen name="New" component={NewGameView} />
               <Stack.Screen name="Continue" component={ContinueView} />
-              <Stack.Screen name="Score" component={ScoreView} />
+              <Stack.Screen
+                name="Score"
+                component={ScoreView}
+              />
               <Stack.Screen name="CheckScore" component={CheckScore} />
             </Stack.Navigator>
           </NavigationContainer>
