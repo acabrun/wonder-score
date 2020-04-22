@@ -1,11 +1,33 @@
 import React, {Component} from 'react';
 import {View, TouchableHighlight, StyleSheet, Text} from 'react-native';
 import {connect} from 'react-redux';
+import ModalClearData from './ModalClearData';
 
 class StartView extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      clearData: false
+    };
+  }
+
+  handleModal = () => {
+    this.setState({ clearData: true })
+  }
+
+  handleOnHide = () => {
+    this.setState({ clearData: false })
+  }
+
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.container} >
+
+        {/* -------------------MODAL CLEAR DATA------------ */}
+        {this.state.clearData ? <ModalClearData onHide={()=> this.handleOnHide()} /> : null }
+        
+
         {/* -------------------CONTINUE-------------------- */}
         {/* ---    Display only if match exist      --- */}
         {this.props.gameSaved.join() === [].join() ? null : (
@@ -22,12 +44,14 @@ class StartView extends Component {
         )}
 
         {/* -------------------NEW GAME-------------------- */}
-        <TouchableHighlight
-          style={styles.button}
-          underlayColor="#fbe899"
-          onPress={() => this.props.navigation.navigate('New')}>
-          <Text style={styles.textButton}> New game </Text>
-        </TouchableHighlight>
+        {this.props.gameSaved.join() === [].join() ? ( // Version for 2 people only
+          <TouchableHighlight
+            style={styles.button}
+            underlayColor="#fbe899"
+            onPress={() => this.props.navigation.navigate('New')}>
+            <Text style={styles.textButton}> New game </Text>
+          </TouchableHighlight>
+        ) : null}
 
         {/* -------------------SCORE-------------------- */}
         {this.props.gameSaved.join() === [].join() ? null : (
@@ -40,6 +64,17 @@ class StartView extends Component {
               })
             }>
             <Text style={styles.textButton}> Score </Text>
+          </TouchableHighlight>
+        )}
+
+        {/* -------------------CLEAR DATA-------------------- */}
+        {this.props.gameSaved.join() === [].join() ? null : (
+          <TouchableHighlight
+            style={styles.button}
+            underlayColor="#fbe899"
+            onPress={this.handleModal}
+            >
+            <Text style={styles.textButton}> Clear Data </Text>
           </TouchableHighlight>
         )}
       </View>

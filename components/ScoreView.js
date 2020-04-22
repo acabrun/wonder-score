@@ -191,7 +191,8 @@ export default class ScoreView extends Component {
         {/* ---------------------------------MODAL VIEW WINNER---------------------------------- */}
         {this.state.displayWinner === true ? (
           <ModalViewWinner
-            idMatch={idMatch}
+            // idMatch={idMatch}
+            idMatch={1} // For 2 players only
             // idGame={idGame}
             player1={player1}
             player2={player2}
@@ -715,13 +716,13 @@ export default class ScoreView extends Component {
           <TouchableHighlight
             style={styles.button}
             underlayColor="#fbe899"
-            onPress={
-              this.state.isSave
-                ? () =>
-                    this.props.navigation.navigate('Continue', {
-                      isCheckingScore: false,
-                    })
-                : this.handleRestart
+            onPress={ this.handleRestart  // For 2 players only
+              // this.state.isSave
+              //   ? () =>
+              //       this.props.navigation.navigate('Continue', {
+              //         isCheckingScore: false,
+              //       })
+              //   : this.handleRestart
             }>
             <Text style={styles.textButton}> Restart </Text>
           </TouchableHighlight>

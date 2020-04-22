@@ -43,9 +43,47 @@ class ModalViewWinner extends Component {
     this.setState({saveConfirm: true});
   };
 
+  // _setIdMatch = () => {
+  //   // Continue existing match
+  //   if (!this.props.isNewMatch) {
+  //     this.setState(
+  //       {
+  //         idMatch: this.props.idMatch,
+  //         idGame:
+  //           this.props.gameSaved[this.props.idMatch - 1].paramsMatch[
+  //             this.props.gameSaved[this.props.idMatch - 1].paramsMatch.length -
+  //               1
+  //           ].idGame + 1,
+  //       },
+  //       () => this._saveGame(),
+  //     );
+  //   } else {
+  //     // Create new match
+  //     // First match
+  //     if (this.props.gameSaved.join() === [].join()) {
+  //       this.setState({idMatch: 1, idGame: 1}, () => this._saveGame());
+  //     }
+  //     // Another match exist
+  //     else {
+  //       this.setState(
+  //         {
+  //           idMatch:
+  //             this.props.gameSaved[this.props.gameSaved.length - 1].idMatch + 1,
+  //           idGame: 1,
+  //         },
+  //         () => this._saveGame(),
+  //       );
+  //     }
+  //   }
+  //   this.props.onSave();
+  // };
+
+  // For 2 players only
   _setIdMatch = () => {
     // Continue existing match
-    if (!this.props.isNewMatch) {
+    if (this.props.gameSaved.join() === [].join()) {
+      this.setState({idMatch: 1, idGame: 1}, () => this._saveGame());
+    } else {
       this.setState(
         {
           idMatch: this.props.idMatch,
@@ -57,29 +95,12 @@ class ModalViewWinner extends Component {
         },
         () => this._saveGame(),
       );
-    } else {
-      // Create new match
-      // First match
-      if (this.props.gameSaved.join() === [].join()) {
-        this.setState({idMatch: 1, idGame: 1}, () => this._saveGame());
-      }
-      // Another match exist
-      else {
-        this.setState(
-          {
-            idMatch:
-              this.props.gameSaved[this.props.gameSaved.length - 1].idMatch + 1,
-            idGame: 1,
-          },
-          () => this._saveGame(),
-        );
-      }
     }
     this.props.onSave();
   };
 
   componentDidUpdate() {
-    console.log(this.props.gameSaved);
+    //console.log(this.props.gameSaved);
   }
 
   render() {
@@ -90,7 +111,7 @@ class ModalViewWinner extends Component {
           transparent={false}
           visible={true}
           onRequestClose={() => {
-            Alert.alert('Modal has been closed.');
+            this.handleHide();
           }}>
           {/* ----------------------- SAVE GAME CONFIRM TEXT------------------------ */}
           {this.state.saveConfirm ? (
@@ -156,6 +177,7 @@ const styles = StyleSheet.create({
     fontSize: 35,
     fontWeight: 'bold',
     color: '#fbe899',
+    textAlign: 'center'
   },
   button: {
     alignItems: 'center',

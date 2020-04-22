@@ -10,10 +10,13 @@ class ContinueView extends Component {
     this.state = {};
   }
 
-  componentDidUpdate() {}
+  componentDidUpdate() {
+    
+  }
 
   render() {
     const {isCheckingScore} = this.props.route.params;
+    console.log(this.props.gameSaved);
 
     return (
       <View style={{flex: 1, backgroundColor: 'yellow'}}>
@@ -35,7 +38,7 @@ class ContinueView extends Component {
             {this.props.gameSaved
               ? Object.values(this.props.gameSaved).map((game) => (
                   <TouchableHighlight
-                    key={game.idMatch}
+                   // key={game.idMatch}
                     style={styles.button}
                     underlayColor="#fbe899"
                     backgroundColor="green"

@@ -1,27 +1,21 @@
 import { createStore } from 'redux'
-import {AsyncStorage} from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-community/async-storage';
+import { persistStore, persistReducer } from 'redux-persist'
+
 
 import saveGame from './reducers/SaveGameReducer'
 
 
-export default createStore(saveGame)
+// export default createStore(saveGame)
 
 
 
+const persistConfig = {
+    key: 'root',
+    storage: AsyncStorage,
+  }
 
-
-
-
-
-
-
-
-// const persistConfig = {
-//     key: 'root',
-//     storage: AsyncStorage,
-//   }
-
-// const persistedReducer = persistReducer(persistConfig, saveGame)
+const persistedReducer = persistReducer(persistConfig, saveGame)
 
 // //export default createStore(persistCombineReducers(rootPersistConfig, {saveGame}))
 
@@ -31,5 +25,5 @@ export default createStore(saveGame)
 // //     return { store, persistor }
 // //   }
 
-//   export  const store = createStore(persistedReducer)
-//   export  const persistor = persistStore(store)
+  export  const store = createStore(persistedReducer)
+  export  const persistor = persistStore(store)

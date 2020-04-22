@@ -27,20 +27,34 @@ function saveGame(state = initialState, action) {
           // Game doesn't exist, new game !
           console.log('| Game doesn t exist, new game ! | ');
 
-          // nextState = {
-          //   ...state,
-          //   gameSaved: [ ...state.gameSaved[matchSavedIndex].paramsMatch, action.value.paramsMatch[0] ]
-          // }
+          nextState = {
+            ...state,
+            gameSaved: state.gameSaved.map((game, id) => {
+              if (id === action.value.idMatch - 1) {
+                console.log(`ID: ${id} `);
+                return Object.assign({}, game, {
+                  paramsMatch: [
+                    ...game.paramsMatch,
+                    action.value.paramsMatch[0],
+                  ],
+                });
+              }
+            }),
+          };
 
-          state.gameSaved[matchSavedIndex].paramsMatch.push(action.value.paramsMatch[0])
+          //state.gameSaved[matchSavedIndex].paramsMatch.push(action.value.paramsMatch[0])
         }
       } else {
         // Save new match
         console.log('| Save new match |');
-        nextState = {
-          ...state,
-          gameSaved: [...state.gameSaved, action.value], // concatenation
-        };
+        // nextState = {
+        //   ...state,
+        //   gameSaved: [...state.gameSaved, action.value], // concatenation
+        // };
+
+        nextState = Object.assign({}, state, {
+          gameSaved: [...state.gameSaved, action.value],
+        });
 
         console.log(
           'Match saved ' +
@@ -50,7 +64,16 @@ function saveGame(state = initialState, action) {
             action.value.idMatch,
         );
       }
-      return nextState || state 
+      return nextState || state;
+
+    case 'CLEAR_DATA':
+      console.log(action.value);
+      nextState = {
+        ...state,
+        gameSaved: action.value, // concatenation
+      };
+
+      return nextState || state;
 
     default:
       return state;

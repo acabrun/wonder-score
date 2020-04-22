@@ -28,7 +28,7 @@ export default class ModalView extends Component {
           transparent={false}
           visible={this.state.modalVisible}
           onRequestClose={() => {
-            Alert.alert("Modal has been closed.");
+            this.setModalVisible(!this.state.modalVisible);
           }}
         >
           <View
@@ -64,7 +64,8 @@ export default class ModalView extends Component {
 
 const styles = StyleSheet.create({
   baseText: {
-    fontSize: 18
+    fontSize: 18,
+    textAlign: 'center'
   },
   titleText: {
     fontSize: 30,
