@@ -43,6 +43,10 @@ export default class ScoreView extends Component {
       p1VicSci: false,
       p2VicSci: false,
       isSave: false,
+      victoryP1: false,
+      victoryP2: false,
+      vicMil: false,
+      vicSci: false,
     };
   }
 
@@ -110,30 +114,30 @@ export default class ScoreView extends Component {
       this.state.p1VicMil ||
       this.state.p1VicSci
     )
-      this.setState({winner: this.props.route.params.player1});
+      this.setState({winner: this.props.route.params.player1, victoryP1:true });
     else if (
       this.state.sumPlayer2 > this.state.sumPlayer1 ||
       this.state.p2VicMil ||
       this.state.p2VicSci
     )
-      this.setState({winner: this.props.route.params.player2});
+      this.setState({winner: this.props.route.params.player2, victoryP2: true});
     else this.setState({winner: 'Draw game'});
   };
 
   handleCheckBoxP1Mil = () => {
-    this.setState({p1VicMil: !this.state.p1VicMil});
+    this.setState({p1VicMil: !this.state.p1VicMil, vicMil: !this.state.vicMil });
   };
 
   handleCheckBoxP2Mil = () => {
-    this.setState({p2VicMil: !this.state.p2VicMil});
+    this.setState({p2VicMil: !this.state.p2VicMil, vicMil: !this.state.vicMil });
   };
 
   handleCheckBoxP1Sci = () => {
-    this.setState({p1VicSci: !this.state.p1VicSci});
+    this.setState({p1VicSci: !this.state.p1VicSci, vicSci: !this.state.vicSci});
   };
 
   handleCheckBoxP2Sci = () => {
-    this.setState({p2VicSci: !this.state.p2VicSci});
+    this.setState({p2VicSci: !this.state.p2VicSci, vicSci: !this.state.vicSci});
   };
 
   handleOnSave = () => {
@@ -167,6 +171,10 @@ export default class ScoreView extends Component {
       p1VicSci: false,
       p2VicSci: false,
       isSave: false,
+      victoryP1: false,
+      victoryP1: false,
+      vicMil: false,
+      vicSci: false,
     });
   };
 
@@ -220,6 +228,10 @@ export default class ScoreView extends Component {
             onHide={() => this.handleOnHide()}
             isNewMatch={isNewMatch}
             onSave={this.handleOnSave}
+            victoryP1={this.state.victoryP1}
+            victoryP2={this.state.victoryP2}
+            vicMil={this.state.vicMil}
+            vicSci={this.state.vicSci}
           />
         ) : null}
         <View

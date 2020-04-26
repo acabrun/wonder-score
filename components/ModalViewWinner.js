@@ -15,6 +15,9 @@ class ModalViewWinner extends Component {
     super(props);
     this.state = {
       saveConfirm: false,
+      numberOfVictoryP1: 0,
+      numberOfVictoryP2: 0,
+      isSaved: false,
     };
   }
 
@@ -28,12 +31,16 @@ class ModalViewWinner extends Component {
       idMatch: this.state.idMatch,
       player1NameMatch: this.props.player1,
       player2NameMatch: this.props.player2,
+      victoryP1: this.state.numberOfVictoryP1,
+      victoryP2: this.state.numberOfVictoryP2,
       paramsMatch: [
         {
           idGame: this.state.idGame,
           dateGame: moment().format('DD-MM-YYYY'),
           scoreGame: this.props.score,
           winNameGame: this.props.winner,
+          vicMil: this.props.vicMil,
+          vicSci: this.props.vicSci,
         },
       ],
     };
@@ -79,24 +86,47 @@ class ModalViewWinner extends Component {
   // };
 
   // For 2 players only
-  _setIdMatch = () => {
-    // Continue existing match
+
+  setNumberOfVictory() {
     if (this.props.gameSaved.join() === [].join()) {
-      this.setState({idMatch: 1, idGame: 1}, () => this._saveGame());
+      if (this.props.victoryP1)
+        this.setState({numberOfVictoryP1: 1, numberOfVictoryP2: 0});
+      else if (this.props.victoryP2)
+        this.setState({numberOfVictoryP1: 0, numberOfVictoryP2: 1});
     } else {
-      this.setState(
-        {
-          idMatch: this.props.idMatch,
-          idGame:
-            this.props.gameSaved[this.props.idMatch - 1].paramsMatch[
-              this.props.gameSaved[this.props.idMatch - 1].paramsMatch.length -
-                1
-            ].idGame + 1,
-        },
-        () => this._saveGame(),
-      );
+      Object.values(this.props.gameSaved).map((game) => {
+        if (this.props.victoryP1) {
+          this.setState({numberOfVictoryP1: game.victoryP1++});
+        } else if (this.props.victoryP2) {
+          this.setState({numberOfVictoryP2: game.victoryP2++});
+        }
+      });
     }
-    this.props.onSave();
+  }
+
+  _setIdMatch = () => {
+    if (this.state.isSaved) null;
+    else {
+      this.setNumberOfVictory();
+      // Continue existing match
+      if (this.props.gameSaved.join() === [].join()) {
+        this.setState({idMatch: 1, idGame: 1}, () => this._saveGame());
+      } else {
+        this.setState(
+          {
+            idMatch: this.props.idMatch,
+            idGame:
+              this.props.gameSaved[this.props.idMatch - 1].paramsMatch[
+                this.props.gameSaved[this.props.idMatch - 1].paramsMatch
+                  .length - 1
+              ].idGame + 1,
+          },
+          () => this._saveGame(),
+        );
+      }
+      this.setState({isSaved: true});
+      this.props.onSave();
+    }
   };
 
   componentDidUpdate() {
@@ -104,6 +134,7 @@ class ModalViewWinner extends Component {
   }
 
   render() {
+    //console.log(this.props.gameSaved[0].paramsMatch);
     return (
       <View style={{flex: 1}}>
         <Modal
@@ -177,7 +208,7 @@ const styles = StyleSheet.create({
     fontSize: 35,
     fontWeight: 'bold',
     color: '#fbe899',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   button: {
     alignItems: 'center',

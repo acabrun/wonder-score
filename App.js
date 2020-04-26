@@ -12,11 +12,14 @@ import CheckScore from './components/CheckScore';
 import {persistor, store} from './store/ConfigureStore'; // See for what
 import {persistStore} from 'redux-persist';
 import {PersistGate} from 'redux-persist/lib/integration/react';
+import SplashScreen from 'react-native-splash-screen'
+
 
 export default class App extends Component {
-  // Hide staus bar
+  // Hide status bar
   componentDidMount() {
     StatusBar.setHidden(true);
+    SplashScreen.hide();
   }
 
   render() {

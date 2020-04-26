@@ -41,7 +41,7 @@ export default class ModalView extends Component {
           >
             <View>
               <Text
-                style={{ marginBottom: 50, fontSize: 20, fontWeight: "bold", color: "#fbe899" }}
+                style={{ marginBottom: 50, fontSize: 20, fontWeight: "bold", color: "#fbe899", textAlign: 'center' }}
               >
                 Previous winner was {this.props.previousWinner}
               </Text>

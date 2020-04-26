@@ -6,19 +6,42 @@ class ScoreItem extends React.Component {
     const score = this.props.score;
     return (
       <View style={styles.container}>
-        <View style={{flex: 1, flexDirection: 'row'}}>
-          <View style={{flex: 1, }}>
-            <Text> {`Date: ${score.dateGame}`} </Text>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}>
+          <View style={{flex: 1}}>
+            <Text style={{fontWeight: 'bold', textAlign: 'left'}}>
+              {' '}
+              {`${score.dateGame}`}{' '}
+            </Text>
           </View>
-          <View style={{flex: 1, alignItems: 'center'}}>
-            <Text> {`Winner: ${score.winNameGame}`} </Text>
+          <View style={{flex: 2, alignItems: 'center', justifyContent: 'center'}}>
+            {!score.vicMil && !score.vicSci ? (
+              <Text style={{fontSize: 24, fontWeight: 'bold'}}>
+                {`${score.scoreGame[0]} - ${score.scoreGame[1]}`}
+              </Text>
+            ) : score.vicMil ? (
+              <Text
+                style={{fontWeight: 'bold', fontSize: 18, color: '#972a2a' }}>
+                Military Victory
+              </Text>
+            ) : (
+              <Text
+                style={{fontWeight: 'bold', fontSize: 18, color: '#265c3a'}}>
+                Scientific Victory
+              </Text>
+            )}
           </View>
-        </View>
-        <View style={{flex: 1, alignItems: 'center'}}>
-          <Text style={{fontSize: 24, fontWeight: 'bold'}}>
-            {' '}
-            {`${score.scoreGame[0]} - ${score.scoreGame[1]}`}{' '}
-          </Text>
+          <View style={{flex: 1}}>
+            <Text
+              style={{fontWeight: 'bold', fontSize: 18, textAlign: 'right'}}>
+              {' '}
+              {`${score.winNameGame}`}{' '}
+            </Text>
+          </View>
         </View>
       </View>
     );
@@ -31,7 +54,9 @@ const styles = StyleSheet.create({
     padding: 5,
     marginBottom: 5,
     borderWidth: 3,
-    borderColor: "#518668"
+    borderColor: '#518668',
+    height: 70,
+    borderRadius: 10,
   },
 });
 

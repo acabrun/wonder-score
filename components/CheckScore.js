@@ -25,9 +25,21 @@ class CheckScore extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.matchTitle}>
-          <Text style={{fontSize: 24, fontWeight: "bold"}}>{` ${idMatch.player1} VS ${idMatch.player2} `}</Text>
+          <View style={styles.victory}>
+            <Text style={styles.textScore}>{idMatch.victoryP1}</Text>
+          </View>
+          <View style={styles.match}>
+            <Text
+              style={{
+                fontSize: 24,
+                fontWeight: 'bold',
+              }}>{`${idMatch.player1} VS ${idMatch.player2}`}</Text>
+          </View>
+          <View style={styles.victory}>
+            <Text style={styles.textScore}>{idMatch.victoryP2}</Text>
+          </View>
         </View>
-        <View style={{flex: 11, }}>
+        <View style={{flex: 11}}>
           <FlatList
             data={idMatch.paramsMatch}
             renderItem={({item}) => <ScoreItem score={item} />}
@@ -51,8 +63,22 @@ const styles = StyleSheet.create({
   },
   matchTitle: {
     flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    justifyContent: "center"
+  },
+  match: {
+    flex: 2,
+    alignItems: 'center',
+  },
+  victory: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  textScore: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#518668'
   },
   baseText: {
     fontSize: 28,
