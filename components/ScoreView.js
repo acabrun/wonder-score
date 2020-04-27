@@ -206,7 +206,8 @@ export default class ScoreView extends Component {
 
     //this.props.navigation.dispatch(StackActions.popToTop());
     return (
-      <KeyboardAvoidingView style={{flex: 1}}>
+      <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={-50} enabled style={{flex: 1}}>
+
         {/* ---------------------------------------MODAL VIEW-------------------------------------- */}
         {isNewMatch ? null : (
           <ModalView
@@ -307,6 +308,7 @@ export default class ScoreView extends Component {
               <TextInput
                 style={styles.textInput}
                 keyboardType="numeric"
+                maxLength={2}
                 onChangeText={(p1v1) => this.setState({p1v1})}
                 value={this.state.p1v1}
               />
@@ -321,6 +323,7 @@ export default class ScoreView extends Component {
               <TextInput
                 style={styles.textInput}
                 keyboardType="numeric"
+                maxLength={2}
                 onChangeText={(p2v1) => this.setState({p2v1})}
                 value={this.state.p2v1}
               />
@@ -345,6 +348,7 @@ export default class ScoreView extends Component {
               <TextInput
                 style={styles.textInput}
                 keyboardType="numeric"
+                maxLength={2}
                 onChangeText={(p1v2) => this.setState({p1v2})}
                 value={this.state.p1v2}
               />
@@ -359,6 +363,7 @@ export default class ScoreView extends Component {
               <TextInput
                 style={styles.textInput}
                 keyboardType="numeric"
+                maxLength={2}
                 onChangeText={(p2v2) => this.setState({p2v2})}
                 value={this.state.p2v2}
               />
@@ -383,6 +388,7 @@ export default class ScoreView extends Component {
               <TextInput
                 style={styles.textInput}
                 keyboardType="numeric"
+                maxLength={2}
                 onChangeText={(p1v3) => this.setState({p1v3})}
                 value={this.state.p1v3}
               />
@@ -397,6 +403,7 @@ export default class ScoreView extends Component {
               <TextInput
                 style={styles.textInput}
                 keyboardType="numeric"
+                maxLength={2}
                 onChangeText={(p2v3) => this.setState({p2v3})}
                 value={this.state.p2v3}
               />
@@ -421,6 +428,7 @@ export default class ScoreView extends Component {
               <TextInput
                 style={styles.textInput}
                 keyboardType="numeric"
+                maxLength={2}
                 onChangeText={(p1v4) => this.setState({p1v4})}
                 value={this.state.p1v4}
               />
@@ -435,6 +443,7 @@ export default class ScoreView extends Component {
               <TextInput
                 style={styles.textInput}
                 keyboardType="numeric"
+                maxLength={2}
                 onChangeText={(p2v4) => this.setState({p2v4})}
                 value={this.state.p2v4}
               />
@@ -459,6 +468,7 @@ export default class ScoreView extends Component {
               <TextInput
                 style={styles.textInput}
                 keyboardType="numeric"
+                maxLength={2}
                 onChangeText={(p1v5) => this.setState({p1v5})}
                 value={this.state.p1v5}
               />
@@ -473,6 +483,7 @@ export default class ScoreView extends Component {
               <TextInput
                 style={styles.textInput}
                 keyboardType="numeric"
+                maxLength={2}
                 onChangeText={(p2v5) => this.setState({p2v5})}
                 value={this.state.p2v5}
               />
@@ -497,6 +508,7 @@ export default class ScoreView extends Component {
               <TextInput
                 style={styles.textInput}
                 keyboardType="numeric"
+                maxLength={2}
                 onChangeText={(p1v6) => this.setState({p1v6})}
                 value={this.state.p1v6}
               />
@@ -511,6 +523,7 @@ export default class ScoreView extends Component {
               <TextInput
                 style={styles.textInput}
                 keyboardType="numeric"
+                maxLength={2}
                 onChangeText={(p2v6) => this.setState({p2v6})}
                 value={this.state.p2v6}
               />
@@ -535,6 +548,7 @@ export default class ScoreView extends Component {
               <TextInput
                 style={styles.textInput}
                 keyboardType="numeric"
+                maxLength={2}
                 onChangeText={(p1v7) => this.setState({p1v7})}
                 value={this.state.p1v7}
               />
@@ -549,6 +563,7 @@ export default class ScoreView extends Component {
               <TextInput
                 style={styles.textInput}
                 keyboardType="numeric"
+                maxLength={2}
                 onChangeText={(p2v7) => this.setState({p2v7})}
                 value={this.state.p2v7}
               />
@@ -573,6 +588,7 @@ export default class ScoreView extends Component {
               <TextInput
                 style={styles.textInput}
                 keyboardType="numeric"
+                maxLength={2}
                 onChangeText={(p1v8) => this.setState({p1v8})}
                 value={this.state.p1v8}
               />
@@ -587,6 +603,7 @@ export default class ScoreView extends Component {
               <TextInput
                 style={styles.textInput}
                 keyboardType="numeric"
+                maxLength={2}
                 onChangeText={(p2v8) => this.setState({p2v8})}
                 value={this.state.p2v8}
               />

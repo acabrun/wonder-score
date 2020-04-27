@@ -16,7 +16,7 @@ import SplashScreen from 'react-native-splash-screen'
 
 
 export default class App extends Component {
-  // Hide status bar
+  // Hide status bar & splashscreen
   componentDidMount() {
     StatusBar.setHidden(true);
     SplashScreen.hide();

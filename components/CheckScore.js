@@ -33,7 +33,21 @@ class CheckScore extends Component {
               style={{
                 fontSize: 24,
                 fontWeight: 'bold',
-              }}>{`${idMatch.player1} VS ${idMatch.player2}`}</Text>
+              }}>{`${idMatch.player1}`}</Text>
+          </View>
+          <View style={styles.victory}>
+            <Text
+              style={{
+                fontSize: 30,
+                fontWeight: 'bold',
+              }}>{`|`}</Text>
+          </View>
+          <View style={styles.match}>
+            <Text
+              style={{
+                fontSize: 24,
+                fontWeight: 'bold',
+              }}>{`${idMatch.player2}`}</Text>
           </View>
           <View style={styles.victory}>
             <Text style={styles.textScore}>{idMatch.victoryP2}</Text>
@@ -68,7 +82,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   match: {
-    flex: 2,
+    flex: 3,
     alignItems: 'center',
   },
   victory: {

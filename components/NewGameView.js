@@ -31,6 +31,7 @@ class NewGameView extends Component {
                 : styles.textInputNotFilled
             }
             placeholder=" Player 1"
+            maxLength={8}
             onChangeText={(p1) => this.setState({p1})}
             value={this.state.p1}
           />
@@ -41,6 +42,7 @@ class NewGameView extends Component {
                 : styles.textInputNotFilled
             }
             placeholder=" Player 2"
+            maxLength={8}
             onChangeText={(p2) => this.setState({p2})}
             value={this.state.p2}
           />
