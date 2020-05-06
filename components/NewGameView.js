@@ -89,6 +89,7 @@ const styles = StyleSheet.create({
   baseText: {
     fontSize: 28,
     fontWeight: 'bold',
+    fontFamily: 'Cochin'
   },
   button: {
     alignItems: 'center',
