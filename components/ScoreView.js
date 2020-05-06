@@ -206,7 +206,7 @@ export default class ScoreView extends Component {
 
     //this.props.navigation.dispatch(StackActions.popToTop());
     return (
-      <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={-50} enabled style={{flex: 1}}>
+      <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={-90} enabled style={{flex: 1}}>
 
         {/* ---------------------------------------MODAL VIEW-------------------------------------- */}
         {isNewMatch ? null : (
@@ -806,8 +806,9 @@ const styles = StyleSheet.create({
     flex: 1,
     borderWidth: 0,
     width: '100%',
+    height: '100%',
     textAlign: 'center',
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 'bold',
   },
   checkboxContainer: {

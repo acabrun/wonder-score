@@ -55,7 +55,10 @@ class CheckScore extends Component {
         </View>
         <View style={{flex: 11}}>
           <FlatList
-            data={idMatch.paramsMatch}
+            //data={idMatch.paramsMatch}
+            data={idMatch.paramsMatch.sort(function (a, b) {
+              return new Date(b.dateGame) - new Date(a.dateGame);
+            })}
             renderItem={({item}) => <ScoreItem score={item} />}
             //keyExtractor={(item) => item.idGame}
             //   extraData={selected}
@@ -92,7 +95,7 @@ const styles = StyleSheet.create({
   textScore: {
     fontSize: 30,
     fontWeight: 'bold',
-    color: '#518668'
+    color: '#518668',
   },
   baseText: {
     fontSize: 28,
